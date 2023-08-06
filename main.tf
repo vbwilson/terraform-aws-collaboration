@@ -20,6 +20,7 @@ provider "aws" {
   default_tags {
     tags = {
       Project = "T101-Study-6week"
+      Owner = "tom"
     }
   }
 }
