@@ -1,12 +1,12 @@
 terraform {
-   cloud {
-     organization = "vbwilson-org"         # 생성한 ORG 이름 지정
-     hostname     = "app.terraform.io"      # default
+  // cloud {
+  //   organization = "<MY_ORG_NAME>"         # 생성한 ORG 이름 지정
+  //   hostname     = "app.terraform.io"      # default
 
-     workspaces {
-       name = "terraform-aws-collaboration"  # 없으면 생성됨
-     }
-   }
+  //   workspaces {
+  //     name = "collaboration"  # 없으면 생성됨
+  //   }
+  // }
   required_providers {
     aws = {
       source  = "hashicorp/aws"
@@ -20,7 +20,7 @@ provider "aws" {
   default_tags {
     tags = {
       Project = "T101-Study-6week"
-      Owner   = "tom"
+      Owner = "jerry & tom"
     }
   }
 }
@@ -148,9 +148,9 @@ resource "aws_instance" "hashicat" {
 resource "null_resource" "configure-cat-app" {
   depends_on = [aws_eip_association.hashicat]
 
-  // triggers = {
-  //   build_number = timestamp()
-  // }
+   triggers = {
+     build_number = timestamp()
+   }
 
   provisioner "file" {
     source      = "files/"
